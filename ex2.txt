@@ -1,0 +1,9 @@
+    1  mkdir~/week1
+    2  mkdir ~/week1
+    3  cd ~/week1
+    4  ls /usr/bin | grep gcc | sort -r > ex1.txt
+    5  nano
+    6  ls testing.txt
+    7  cat testing.txt
+    8  echo "testing again"
+    9  history >> ex2.txt
