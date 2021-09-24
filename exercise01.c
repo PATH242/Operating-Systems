@@ -1,7 +1,6 @@
 ///first come first serve
 
 #include <stdio.h>
-#include <algorithm>
 using namespace std;
 const int N=1e3;
 int a[N],b[N],n;
