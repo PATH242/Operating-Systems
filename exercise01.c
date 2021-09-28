@@ -1,23 +1,29 @@
 ///first come first serve
 
 #include <stdio.h>
-using namespace std;
 const int N=1e3;
-int a[N],b[N],n;
-long long int w[N],c[N],t[N];
+int a[1000],b[1000],n;
+long long int w[1000],c[1000],t[1000];
 void calculateWait(){
     w[0]=0;
     for(int i=1;i<n;i++){
+
         w[i]=b[i-1]+w[i-1];
     }
     for(int i=1;i<n;i++){
         w[i]-=a[i];
+        ///handling the case at which a process comes and runs with no wait
+        if(0> w[i])
+            w[i]=0;
     }
 }
 void calculateCompletion(){
     c[0]=b[0]+a[0];
     for(int i=1;i<n;i++){
-        c[i]=b[i]+c[i-1];
+        int startingTime= c[i-1];
+        if(a[i]>startingTime)
+            startingTime= a[i];
+        c[i]=b[i]+startingTime;
     }
 }
 void calculateTurnaround(){
@@ -26,7 +32,7 @@ void calculateTurnaround(){
     }
 }
 void print(){
-    printf("The following schedule represent the processes running using FCFS:\n\n");
+    printf("The following schedule represents the processes running using FCFS:\n\n");
     printf("Arrival time # burst time  # waiting time # completion time # turnaround time\n");
     for(int i=0;i<n;i++){
         printf("%d\t\t",a[i]);
