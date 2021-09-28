@@ -1,3 +1,4 @@
+
 ///round robin
 
 #include <stdio.h>
@@ -48,6 +49,22 @@ void calculateTurnaround(){
         t[i]= b[i]+w[i];
     }
 }
+int getAverageTurnaround(){
+    long long int sum=0;
+    for(int i=0;i<n;i++){
+        sum+= t[i];
+    }
+    sum/=n;
+    return (int)sum;
+}
+int getAverageWaiting(){
+    long long int sum=0;
+    for(int i=0;i<n;i++){
+        sum+= w[i];
+    }
+    sum/=n;
+    return (int)sum;
+}
 void print(){
     printf("The following schedule represents the processes running using Round Robin algorithm:\n\n");
     printf("Arrival time # burst time  # waiting time # completion time # turnaround time\n");
@@ -59,6 +76,8 @@ void print(){
         printf("%d\t\t\t",t[i]);
         printf("\n");
     }
+    printf("Average turn around time: %d\n",(getAverageTurnaround()));
+    printf("Average waiting time: %d\n",(getAverageWaiting()));
 }
 int main(){
     int qt;
