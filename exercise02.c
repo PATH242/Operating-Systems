@@ -1,22 +1,24 @@
- 
+
+///Shortest job first
+
 #include <stdio.h>
-using namespace std;
 const int N=1e3;
-int a[N],b[N],n;
-long long int w[N],c[N],t[N];
+int a[1000],b[1000],n;
+long long int w[1000],c[1000],t[1000];
 void calculateWait(){
-    w[0]=0;
+    w[0]=a[0];
     for(int i=1;i<n;i++){
         w[i]=b[i-1]+w[i-1];
     }
-    for(int i=1;i<n;i++){
+    for(int i=0;i<n;i++){
         w[i]-=a[i];
+        if(w[i]<0)
+            w[i]=0;
     }
 }
 void calculateCompletion(){
-    c[0]=b[0]+a[0];
-    for(int i=1;i<n;i++){
-        c[i]=b[i]+c[i-1];
+    for(int i=0;i<n;i++){
+        c[i]= t[i]+ a[i];
     }
 }
 void calculateTurnaround(){
@@ -24,8 +26,24 @@ void calculateTurnaround(){
         t[i]= b[i]+w[i];
     }
 }
+int getAverageTurnaround(){
+    long long int sum=0;
+    for(int i=0;i<n;i++){
+        sum+= t[i];
+    }
+    sum/=n;
+    return (int)sum;
+}
+int getAverageWaiting(){
+    long long int sum=0;
+    for(int i=0;i<n;i++){
+        sum+= w[i];
+    }
+    sum/=n;
+    return (int)sum;
+}
 void print(){
-    printf("The following schedule represent the processes running using FCFS:\n\n");
+    printf("The following schedule represents the processes running using SJF:\n\n");
     printf("Arrival time # burst time  # waiting time # completion time # turnaround time\n");
     for(int i=0;i<n;i++){
         printf("%d\t\t",a[i]);
@@ -35,6 +53,9 @@ void print(){
         printf("%d\t\t\t",t[i]);
         printf("\n");
     }
+    printf("Average turn around time: %d\n",(getAverageTurnaround()));
+    printf("Average waiting time: %d\n",(getAverageWaiting()));
+
 }
 int main(){
     printf("please enter the number of processes\n");
@@ -48,7 +69,7 @@ int main(){
         printf("\n**********************\n\n");
     }
     for(int i=0;i<n-1;i++){
-        for(int j=i;j<n-1;j++){
+        for(int j=0;j<n-1;j++){
             if(a[j]>a[j+1]){
                 int temp= a[j];
                 a[j]= a[j+1];
@@ -58,8 +79,8 @@ int main(){
                 b[j+1]=temp;
             }
             else
-            if(a[i]==a[i+1]){
-                if(b[i]>b[i+1]){
+            if(a[j]==a[j+1]){
+                if(b[j]>b[j+1]){
                    int temp= a[j];
                     a[j]= a[j+1];
                     a[j+1]=temp;
@@ -71,9 +92,8 @@ int main(){
         }
     }
     calculateWait();
-    calculateCompletion();
     calculateTurnaround();
+    calculateCompletion();
     print();
     return 0;
 }
- 
