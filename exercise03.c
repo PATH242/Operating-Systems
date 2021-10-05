@@ -25,10 +25,8 @@ int main(){
 	int n2=0;
 	scanf("%d",&n2);
 
-	a1 = malloc(n2*sizeof(int));
-    for(int i=0;i<n1;i++){
-        *(a1+i)=100;
-    }
+	realloc(a1,n2*sizeof(int));
+    
 	//If the new array is a larger size, set all new members to 0. Reason: dont want to use uninitialized variables.
 
 	if(n2>n1){
