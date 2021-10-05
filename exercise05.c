@@ -1,4 +1,4 @@
-///fix the code provided in the exercise
+///fix the segmentation fault in the code provided in the exercise
 
 #include <stdio.h>
 int main (){
