@@ -1,0 +1,8 @@
+C:\Users\menna>systeminfo | find "Physical Memory"
+Total Physical Memory:     16,303 MB
+Available Physical Memory: 8,896 MB
+
+C:\Users\menna>systeminfo | find "Virtual Memory"
+Virtual Memory: Max Size:  18,735 MB
+Virtual Memory: Available: 9,341 MB
+Virtual Memory: In Use:    9,394 MB
