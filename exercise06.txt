@@ -1,0 +1,2 @@
+offset: [0,8]KB -> 8192 -> 2^13, so we need 13 bits for offset
+page number: we only have 3 bits left -> 2^3 = 8 -> so we can only 8 page tables
