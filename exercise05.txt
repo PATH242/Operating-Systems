@@ -1,0 +1,2 @@
+The physical address is the actual physical RAM address that contains the data of the program,
+whereas the virtual address is an address that's linked to the physical address and is just used by the program itself.
