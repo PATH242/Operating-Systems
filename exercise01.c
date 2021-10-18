@@ -12,7 +12,7 @@ int getLowestRbit(int* CA, int* pageFrame){
     return mni;
 }
 int main(){
-    int n,m,t[1000],a,rbit[10000],CA[10000]; ///CA is counter for ageing algorithm
+    int n,m,t[10000],a,rbit[10000],CA[10000]; ///CA is counter for ageing algorithm
     ///t is an array for time, and a is a temporary variable to hold page index
     int pageFrame[10000]; ///this array indicates if page of index i is in our system's page frame
 
