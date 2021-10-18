@@ -13,22 +13,27 @@ int getLowestRbit(int* CA, int* pageFrame){
 }
 int main(){
     int n,m,t[1000],a,rbit[10000],CA[10000]; ///CA is counter for ageing algorithm
-    int pageFrame[10000];
+    ///t is an array for time, and a is a temporary variable to hold page index
+    int pageFrame[10000]; ///this array indicates if page of index i is in our system's page frame
+
+    ///initialize variables:
     memset(pageFrame,0,sizeof pageFrame);
     memset(rbit,0,sizeof rbit);
     memset(CA,0,sizeof CA);
     int usedPagesNumber=0,hit=0,miss=0;
-    
+
     scanf("%d%d",&n,&m);
     for(int i=0;i<m;i++){
         scanf("%d%d",t+i,&a);
+        ///update ages if we moved on to another time cycle
         if(i&&t[i]!=t[i-1]){
             for(int j=0;j<10001;j++){
-                CA[j]= ((CA[j]>>1) | ((rbit[j]==t[i-1])<<7));
+                CA[j]= ((CA[j]>>1) | ((rbit[j])<<7));
                 rbit[j]=0;
             }
         }
-        rbit[a]=t[i];
+
+        rbit[a]=1;
         if(pageFrame[a]){
             hit++;
             printf("1\n");
