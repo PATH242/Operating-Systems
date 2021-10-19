@@ -1,7 +1,10 @@
+///Please note that the below array sizes can be increased incase of large page numbers;
+
 #include <stdio.h>
 int getLowestRbit(int* CA, int* pageFrame){
+    const int Size= 10000;
     int mn= 11111111,mni=-1;
-    for(int i=1;i<10001;i++){
+    for(int i=1;i<=Size;i++){
         if((*(pageFrame+i))==0)
             continue;
         if(*(CA+i)<mn){
@@ -12,9 +15,10 @@ int getLowestRbit(int* CA, int* pageFrame){
     return mni;
 }
 int main(){
-    int n,m,t[10000],a,rbit[10000],CA[10000]; ///CA is counter for ageing algorithm
+    const int Size= 10000;
+    int n,m,t[Size+1],a,rbit[Size+1],CA[Size+1]; ///CA is counter for ageing algorithm
     ///t is an array for time, and a is a temporary variable to hold page index
-    int pageFrame[10000]; ///this array indicates if page of index i is in our system's page frame
+    int pageFrame[Size+1]; ///this array indicates if page of index i is in our system's page frame
 
     ///initialize variables:
     memset(pageFrame,0,sizeof pageFrame);
