@@ -23,10 +23,7 @@ int main(){
             else 
             if (evt.value == 1 && evt.type == EV_KEY)
                 printf("PRESSED 0x%04x (%d)\n", evt.code, evt.code);
-            else
-            if(evt.type == EV_KEY){
-                printf("value %d, code[%d,%x], type %d",evt.value,evt.code, evt.code, evt.type);
-            }
+           
             fflush(stdout);
         } 
     }
