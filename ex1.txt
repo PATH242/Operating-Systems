@@ -43,3 +43,9 @@
     5040-5047 : ahci
   5048-504b : 0000:00:17.0
     5048-504b : ahci
+    
+    
+   ///comments:
+   //dma1: Data Memory Address 1
+   //pic1: Peripherical Interface controller 1
+   //timer1: timer
